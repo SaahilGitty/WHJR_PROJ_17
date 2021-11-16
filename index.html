@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>imageRecognizer</title>
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+    <script src="webcam.js"></script>
+    
+  </head>
+  <body style="background-color: rgb(105, 0, 0);">
+    <br>
+    <div class="container bg-danger text-center" style="padding-left: 10%; padding-right: 10%; padding-top: 5%; padding-bottom: 5%;"><h2>Image Recognizer</h2><h6 style="color: red;">F12 > Console</h6> <input type="month"></div>
+    
+    <div class="container bg-warning" style="padding: 2%; display:flex;">
+        <div class="col-md-6">
+        <ul class="list-group">
+            <style>
+                .list-group-item {
+                    background-color: rgb(255, 182, 182);
+                    color: black;
+                }
+            </style>
+            <li class="list-group-item">Mouse</li>
+            <li class="list-group-item">Stick of Deodorant</li>
+            <li class="list-group-item">Glass</li>
+            <li class="list-group-item">Head phones</li>
+            <li class="list-group-item">Marker</li>
+            <li class="list-group-item"><button class="btn-primary" onclick="camFix()">camFix</button></li>
+        </ul>
+        </div>
+        <div class="col-md-6" style="padding-left:2%;">
+            <div id="camera" class="bg-dark" style="height: 100%; width:100%;">
+
+            </div>
+        </div>
+        <br>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <div>Teachable Machine Image Model</div>
+
+
+    <script>
+      
+      Webcam.attach("#camera")
+        camera = document.getElementById("camera")
+
+        Webcam.set({
+            width:300,
+            height:300,
+            image_format:"jpeg",
+            image_quality:90,
+        })
+
+        function take_selfie() {
+            console.log("Webcam.snap();")
+            Webcam.snap(function(data_uri) {
+                document.getElementById("result").innerHTML = '<img id="selfie_image" src="'+data_uri+'"/>';
+            });
+            
+        }
+
+        function camFix(){
+          Webcam.attach("#camera")
+        camera = document.getElementById("camera")
+
+        Webcam.set({
+            width:300,
+            height:300,
+            image_format:"jpeg",
+            image_quality:90,
+        })
+
+        function take_selfie() {
+            console.log("Webcam.snap();")
+            Webcam.snap(function(data_uri) {
+                document.getElementById("result").innerHTML = '<img id="selfie_image" src="'+data_uri+'"/>';
+            });
+            
+        }
+        }
+        console.log("Press Enter")
+        console.log("Click on camFix.");
+
+        console.log("ml5 -v: " + ml5.version);
+      
+    </script>
+  </body>
+</html>
